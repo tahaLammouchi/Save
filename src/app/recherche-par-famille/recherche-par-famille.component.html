@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="container">
+        <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+            <label>Categories</label> <br>
+            <select class="from-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="IdFamille" (change)="onChange()">
+                <option *ngFor="let fam of familles " value="{{fam.idFam}}">
+                    {{fam.nomFam}}
+                </option>
+            </select>
+
+        </div>
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Pays</th>
+                        <th>Date Fabrication</th>
+                        <th>Famille</th>
+                    </tr>
+                    <tbody *ngFor="let medicament of medicaments">
+                        <tr>
+                            <td>{{medicament.idMedicament}}</td>
+                            <td>{{medicament.nomMedicament}}</td>
+                            <td>{{medicament.prixMedicament}}</td>
+                            <td>{{medicament.paysFabricant}}</td>
+                            <td>{{medicament.datefabrication | date:'dd/MM/yyyy'}}</td>
+                            <td>{{medicament.famille.nomFam}}</td>
+                            <td><a class="btn btn-danger" (click)="supprimerMedicament(medicament)">Supprimer</a></td>
+                            <td><a class="btn btn-success" [routerLink]="['/updateMedicament',medicament.idMedicament]">Modifier</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
